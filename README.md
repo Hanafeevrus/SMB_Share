@@ -41,14 +41,17 @@ smbclient - 192.168.111.61 -клиент
 	writable = yes
 	guest ok = yes
 	read only = no
-	force user = nobody   
-  ```   
+	force user = nobody		
+	create mode = 0777
+        directory mode = 0777
+        force user = nobody		
+```   
   #### Настройка клиента.   
   Автоматическое монтирование директории с помощью fstab, Подробное описание [man fstab](http://man7.org/linux/man-pages/man5/fstab.5.html).      
   * Создать директорию монтирование   
   `mkdir /mnt/share`    
   * Добавить в `/etc/fstab`   
-  `//192.168.111.60/samba_share/ /mnt/share cifs guest, 0 0 `   
+  `//192.168.111.60/samba_share/ /mnt/share cifs guest,dir_mode=0777,file_mode=0777 0 0 `   
   
   Проверить можно:    
   `sudo mount -a`   
