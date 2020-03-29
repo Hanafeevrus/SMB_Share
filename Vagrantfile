@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
     	sudo yum update
     	sudo yum install samba samba-common cups-libs samba-client -y
 	sudo mkdir -p /samba/upload
-	sudo chmod -R 0775 /samba/upload
+	sudo chmod 0777 /samba/upload
         sudo chown -R nobody:nobody /samba/upload
 	sudo systemctl start firewalld
 	sudo systemctl enable firewalld
@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
 	sudo systemctl enable firewalld
 	sudo yum install samba-client -y
 	sudo mkdir /mnt/share
-	echo //192.168.111.60/samba_share/ /mnt/share cifs guest, 0 0 >> /etc/fstab
+	echo //192.168.111.60/samba_share/ /mnt/share cifs guest,dir_mode=0777,file_mode=0777 0 0  >> /etc/fstab
 	sudo mount -a
         sudo cp /vagrant/FileTestShare /mnt/share/upload
 	sudo reboot
