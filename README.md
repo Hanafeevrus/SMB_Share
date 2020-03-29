@@ -24,7 +24,7 @@ smbclient - 192.168.111.61 -клиент
 * Настройка [Selinux](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/managing_confined_services/sect-managing_confined_services-samba-booleans)   
 `sudo setsebool -P samba_export_all_ro=1 samba_export_all_rw=1`
 * Настройка сервиса smb   
-Основной конфигурационный файл `/etc/samba/smb.conf` определяет глобальные параметры сервера и параметры расшаренных директорий.    
+Основной конфигурационный файл `/etc/samba/smb.conf` определяет глобальные параметры сервера и параметры расшариваемых директорий.    
 Подробное описание синтаксиса и параметров в [man smb.conf](https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html).    
 В моем случае используется подключение с гостевой авторизацией `guest ok = yes` и возможностью записи `writable = yes`    
 ```
